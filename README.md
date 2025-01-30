@@ -24,3 +24,19 @@ We'll learn how to design and organize data using MongoDB. A schema helps us to 
 Authentication ensures only the right to people who can access certain features. For example:
 - Users need to log in to place orders or see their personal data.
 - It keeps the app secure by verifying user's identities. 
+
+## Milestone 3:
+
+Set up dedicated folders for organizing backend code effectively. Initialized and configured a Node.js server to handle API requests. Connected the application to MongoDB to store and manage data. Implemented basic error handling to ensure smooth server operation.
+
+## Milestone 4:
+
+Created a User Model to define how user data is structured in the database also developed a User Controller to manage user interactions, like adding or retrieving data. Additionally, configured Multer to handle file uploads, allowing users to store files such as images.
+
+## Milestone 5:
+
+I built the Sign-Up page for user registration using HTML and CSS. I implemented form validation to ensure valid inputs, like email format and password security. This enhances user experience and prevents errors. All changes have been committed and pushed to the repository.
+
+## Milestone 6:
+
+I created a backend signup API that securely stores user data. Passwords are encrypted using bcrypt before saving to MongoDB. The API ensures secure user authentication and data privacy. All changes are committed and pushed.

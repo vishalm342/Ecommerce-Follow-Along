@@ -40,3 +40,7 @@ I built the Sign-Up page for user registration using HTML and CSS. I implemented
 ## Milestone 6:
 
 I created a backend signup API that securely stores user data. Passwords are encrypted using bcrypt before saving to MongoDB. The API ensures secure user authentication and data privacy. All changes are committed and pushed.
+
+## Milestone 7:
+
+In this milestone, we implemented user login authentication by validating credentials and comparing encrypted passwords using bcrypt. The process involves retrieving user data, hashing the entered password, and matching it with the stored hash. If authenticated, access is granted; otherwise, an error is returned. This enhances security and protects user data. 🚀

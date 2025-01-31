@@ -1,4 +1,4 @@
-import Product from "../components/products/Products";
+import Product from "../components/products/Product";
 
 const productDetails = [
   {

@@ -4,7 +4,10 @@
   "description": "Welcome to the **Ecommerv+ce Follow Along Project**, this is a hands-on project where we will build a complete e-commerce application using the MERN stack (MongoDB, Express.js, React.js, and Node.j)s. The goal is to learn how to developm a full-stack web application step by step.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "keywords": [],
   "author": "",

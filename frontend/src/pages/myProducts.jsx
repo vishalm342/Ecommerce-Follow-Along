@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Product from "../components/products/Products";
-export default function Home() {
+
+export default function MyProducts() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const email = "vickysololeveling1@gmail.com";
+
+  console.log(email);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/v2/product/get-products")
+    fetch(`http://localhost:8000/api/v2/product/my-products?email=${email}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
@@ -18,11 +22,11 @@ export default function Home() {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("❌ Error fetching products:", err);
+        console.error(" Error fetching products:", err);
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  }, [email]);
 
   if (loading) {
     return (
@@ -36,7 +40,7 @@ export default function Home() {
 
   return (
     <div className="w-full min-h-screen bg-neutral-800">
-      <h1 className="text-3xl text-center text-white py-6">Product Gallery</h1>
+      <h1 className="text-3xl text-center text-white py-6">My products</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-4">
         {products.map((product) => (
           <Product key={product._id} {...product} />

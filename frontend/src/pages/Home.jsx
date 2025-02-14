@@ -6,7 +6,7 @@ export default function Home() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/v2/product/get-products")
+    fetch("http://localhost:8000/api/v2/product/get-all-products")
       .then((res) => {
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
@@ -19,7 +19,7 @@ export default function Home() {
       })
       .catch((err) => {
         console.error("❌ Error fetching products:", err);
-        setError(err.message);
+        setError(err.message || "An unknown error occurred");
         setLoading(false);
       });
   }, []);

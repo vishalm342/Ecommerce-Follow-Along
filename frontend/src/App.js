@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import CreateProduct from './pages/createProduct';
 import MyProducts from './pages/myProducts';
 import Cart from './pages/cart';
+import ProductDetails from './pages/productDetails.jsx';
 const App = () => {
   return (
     <BrowserRouter>
@@ -19,6 +20,7 @@ const App = () => {
       <Route path="/create-product" element={<CreateProduct />} />
       <Route path='/cart' element={<Cart />} />
       <Route path='/myproducts' element={<MyProducts />} />
+      <Route path='/product/:id' element={<ProductDetails />} />
       </Routes>
     </BrowserRouter>
   );

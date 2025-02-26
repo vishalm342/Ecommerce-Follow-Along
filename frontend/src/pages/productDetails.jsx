@@ -45,6 +45,23 @@ export default function ProductDetails() {
 	const handleDecrement = () => {
 		setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
 	};
+	// eslint-disable-next-line no-unused-vars
+	const addtocart = async () => {
+		try{
+			const response = await axios.post(
+				"https://localhost:8000/api/v2/product/cart",
+				{
+					// eslint-disable-next-line no-undef
+					userId: email,
+					productId: id,
+					quantity: quantity,
+				}
+			);
+			console.log("Added to cart:", response.data);
+		}catch (err){
+			console.log("Error adding to cart:", err);
+		}
+	};
 
 	if (loading) {
 		return (

@@ -1,9 +1,19 @@
+import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
-import Home from "./pages/Home";
-import CreateProduct from "./pages/createProduct";
-import MyProducts from "./pages/myProducts";
+import CreateProduct from "./pages/CreateProduct";
+import MyProducts from "./pages/MyProducts";
+import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/cart";
-import ProductDetails from "./pages/productDetails"
+import Profile from "./pages/profile";
 
-export { LoginPage, SignupPage, Home, CreateProduct, MyProducts, Cart, ProductDetails };
+export {
+  Home,
+  LoginPage,
+  SignupPage,
+  CreateProduct,
+  MyProducts,
+  ProductDetails,
+  Cart,
+  Profile,
+};

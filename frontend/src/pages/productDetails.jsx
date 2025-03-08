@@ -11,7 +11,7 @@ export default function ProductDetails() {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 	const [quantity, setQuantity] = useState(1); 
-
+	const email = "srimandgl22004@gmail.com";
 	useEffect(() => {
 		const fetchProduct = async () => {
 			try {
@@ -45,21 +45,20 @@ export default function ProductDetails() {
 	const handleDecrement = () => {
 		setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
 	};
-	// eslint-disable-next-line no-unused-vars
+    
 	const addtocart = async () => {
-		try{
+		try {
 			const response = await axios.post(
-				"https://localhost:8000/api/v2/product/cart",
+				"http://localhost:8000/api/v2/product/cart",
 				{
-					// eslint-disable-next-line no-undef
 					userId: email,
 					productId: id,
 					quantity: quantity,
 				}
 			);
 			console.log("Added to cart:", response.data);
-		}catch (err){
-			console.log("Error adding to cart:", err);
+		} catch (err) {
+			console.error("Error adding to cart:", err);
 		}
 	};
 
@@ -187,7 +186,7 @@ export default function ProductDetails() {
 							</div>
 
 							<div className="flex flex-wrap gap-x-5 my-3">
-								<button className="bg-black text-white px-5 py-2 rounded-full hover:bg-neutral-800 hover:-translate-y-1.5 active:translate-y-0 transition-transform duration-200 ease-in-out">
+								<button className="bg-black text-white px-5 py-2 rounded-full hover:bg-neutral-800 hover:-translate-y-1.5 active:translate-y-0 transition-transform duration-200 ease-in-out active:duration-0 active:ease-linear" onClick={addtocart}>
 									Add to Cart
 								</button>
 							</div>

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Product from "../components/products/Products";
+import Product from "../components/Products/Product";
+import Navbar from "../components/navbar"; // Updated import
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/v2/product/get-all-products")
+    fetch("http://localhost:8000/api/v2/product/get-products")
       .then((res) => {
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
@@ -19,7 +20,7 @@ export default function Home() {
       })
       .catch((err) => {
         console.error("❌ Error fetching products:", err);
-        setError(err.message || "An unknown error occurred");
+        setError(err.message);
         setLoading(false);
       });
   }, []);
@@ -29,19 +30,23 @@ export default function Home() {
       <div className="text-center text-white mt-10">Loading products...</div>
     );
   }
-
   if (error) {
     return <div className="text-center text-red-500 mt-10">Error: {error}</div>;
   }
 
   return (
-    <div className="w-full min-h-screen bg-neutral-800">
-      <h1 className="text-3xl text-center text-white py-6">Product Gallery</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-4">
-        {products.map((product) => (
-          <Product key={product._id} {...product} />
-        ))}
+    <>
+      <Navbar />
+      <div className="w-full min-h-screen bg-neutral-800">
+        <h1 className="text-3xl text-center text-white py-6">
+          Product Gallery
+        </h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 p-4">
+          {products.map((product) => (
+            <Product key={product._id} {...product} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

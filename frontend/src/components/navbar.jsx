@@ -7,7 +7,6 @@ const NavBar = () => {
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
-
     return (
         <nav className="bg-blue-600">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -107,6 +106,19 @@ const NavBar = () => {
                                     Cart
                                 </NavLink>
                             </li>
+                            <li>
+                                <NavLink
+                                    to="/profile"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "text-white font-semibold px-3 py-2 rounded-md text-sm transition-colors duration-200"
+                                            : "text-gray-200 hover:text-white px-3 py-2 rounded-md text-sm transition-colors duration-200"
+                                    }
+                                >
+                                    Profile
+                                </NavLink>
+                            </li>
+
                         </ul>
                     </div>
                 </div>

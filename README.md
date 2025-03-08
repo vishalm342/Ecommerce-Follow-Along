@@ -78,3 +78,9 @@ In this milestone, we designed the cart schema to store product details in a use
 
 ## Milestone 18: 
 In this milestone, we created a **GET `/cart`** endpoint to fetch the user's cart details, including product information and total amount. The endpoint ensures that only authenticated users can access their cart and retrieves the cart data from the database.
+
+## Milestone 19: 
+In this milestone, we create an frontend page UI for cart and write an endpoint to increase and decrease the quantity of product inside cart
+
+## Milestone 20: 
+In this milestone , we will profile page frontend and write an endpoint to receive user data and display.

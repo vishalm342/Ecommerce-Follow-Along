@@ -1,11 +1,11 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
-const User = require("../model/User");
+const User = require("../model/user");
 const router = express.Router();
 const { upload } = require("../multer");
-const ErrorHandler = require("../middleware/Error");
-const catchAsyncErrors = require("../middleware/CatchAsynError");
+const ErrorHandler = require("../utils/errorHandler");
+const catchAsyncErrors = require("../middleware/catchAsynErrors");
 const bcrypt = require("bcryptjs");
 require("dotenv").config();
 
@@ -69,4 +69,38 @@ router.post("/login", catchAsyncErrors(async (req, res, next) => {
     });
 }));
 
+router.get("/profile", catchAsyncErrors(async (req, res, next) => {
+    const { email } = req.query;
+    if (!email) {
+        return next(new ErrorHandler("Please provide an email", 400));
+    }
+    const user = await User.findOne({ email });
+    if (!user) {
+        return next(new ErrorHandler("User not found", 404));
+    }
+    res.status(200).json({
+        success: true,
+        user: {
+            name: user.name,
+            email: user.email,
+            phoneNumber: user.phoneNumber,
+            avatarUrl: user.avatar.url
+        },
+        addresses: user.addresses,
+
+        // {
+        //     "success": true,
+        //     "user": {
+        //         "name": "a",
+        //         "email":"a@example.com",
+        //         "phoneNumber": "1234567890",
+        //         "avatarUrl": "https://example.com/avatar.jpg"
+        //     },
+        //     "addresses": ["Address 1", "Address 2"]
+        // }
+
+        
+    });
+    console.log(user.avatarUrl)
+}));
 module.exports = router;

@@ -28,7 +28,6 @@ const storage = multer.diskStorage({
   },
 });
 
-
 const pstorage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, productsDir);
@@ -38,7 +37,6 @@ const pstorage = multer.diskStorage({
     const ext = path.extname(file.originalname);
     const filename = path.basename(file.originalname, ext);
     cb(null, `${filename}-${uniqueSuffix}${ext}`);
-
   },
 });
 

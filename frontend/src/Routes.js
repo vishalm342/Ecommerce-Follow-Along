@@ -6,6 +6,7 @@ import MyProducts from "./pages/MyProducts";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/cart";
 import Profile from "./pages/profile";
+import CreateAddress from "./pages/CreateAddress";
 
 export {
   Home,
@@ -16,4 +17,5 @@ export {
   ProductDetails,
   Cart,
   Profile,
+  CreateAddress,
 };

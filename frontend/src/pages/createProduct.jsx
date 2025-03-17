@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import Nav from "../components/navbar";
+import NavBar from "../components/Navbar";
 
 const CreateProduct = () => {
     const { id } = useParams();
@@ -114,9 +114,8 @@ const CreateProduct = () => {
     };
 
     return (
-        <>
-        <Nav/>
         <div className="w-[90%] max-w-[500px] bg-white shadow h-auto rounded-[4px] p-4 mx-auto">
+            <NavBar/>
             <h5 className="text-[24px] font-semibold text-center">
                 {isEdit ? "Edit Product" : "Create Product"}
             </h5>
@@ -226,7 +225,7 @@ const CreateProduct = () => {
                         className="hidden"
                         multiple
                         onChange={handleImagesChange}
-                        required={!isEdit} 
+                        required={!isEdit} //when creating a product this field is required
                     />
                     <label htmlFor="upload" className="cursor-pointer">
                         <AiOutlinePlusCircle size={30} color="#555" />
@@ -250,7 +249,6 @@ const CreateProduct = () => {
                 </button>
             </form>
         </div>
-        </>
     );
 };
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function Myproducts({ _id, name, images, description, price }) {
+function Myproduct({ _id, name, images, description, price }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ function Myproducts({ _id, name, images, description, price }) {
     const handleDelete = async () => {
         try {
             const response = await axios.delete(
-              `  http://localhost:8000/api/v2/product/delete-product/${_id}`
+                `http://localhost:8000/api/v2/product/delete-product/${_id}`
             );
             if (response.status === 200) {
                 alert("Product deleted successfully!");
@@ -69,4 +69,4 @@ function Myproducts({ _id, name, images, description, price }) {
     );
 }
 
-export default Myproducts;
+export default Myproduct;

@@ -1,42 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Nav from "../components/navbar";
+import Nav from "../components/Navbar";
 
 const CreateAddress = () => {
   const navigate = useNavigate();
-
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [address1, setAddress1] = useState("");
   const [address2, setAddress2] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [addressType, setAddressType] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  // Check if user exists before allowing address creation
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8000/api/v2/user/profile?email=rahul@gmail.com",
+          { withCredentials: true }
+        );
+        if (!response.data.user) {
+          setError("User not found. Please register first.");
+        }
+      } catch (err) {
+        console.error("Error checking user:", err);
+        setError("Unable to verify user. Please ensure you're registered and logged in.");
+      }
+    };
+    
+    checkUser();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Add debug logging
-    const token = localStorage.getItem("token");
-    const userEmail = localStorage.getItem("userEmail");
-
-    console.log("Auth check:", {
-      hasToken: !!token,
-      token: token,
-      hasEmail: !!userEmail,
-      email: userEmail,
-    });
-
-    if (!token || !userEmail) {
-      console.log("Missing authentication:", {
-        token: !!token,
-        email: !!userEmail,
-      });
-      alert("Please login first");
-      navigate("/login");
-      return;
-    }
-
+    setIsLoading(true);
+    setError("");
+    
     const addressData = {
       country,
       city,
@@ -44,35 +46,34 @@ const CreateAddress = () => {
       address2,
       zipCode,
       addressType,
-      email: userEmail,
+      email: "rahul@gmail.com"
     };
-
-    // Log form data
-    console.log("Submitting address:", {
-      ...addressData,
-      email: userEmail,
-    });
-
+    
     try {
       const response = await axios.post(
         "http://localhost:8000/api/v2/user/add-address",
         addressData,
         {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       );
-      if (response.status === 201) {
+      
+      setIsLoading(false);
+      if (response.status === 201 || response.status === 200) {
         alert("Address added successfully!");
         navigate("/profile");
       }
     } catch (err) {
-      console.error("Full error:", err);
-      console.error("Response data:", err.response?.data);
-      alert(err.response?.data?.message || "Failed to add address");
+      setIsLoading(false);
+      console.error("Error adding address:", err);
+      
+      let errorMessage = "Failed to add address. Please check the data and try again.";
+      if (err.response && err.response.data && err.response.data.message) {
+        errorMessage = err.response.data.message;
+      }
+      
+      setError(errorMessage);
     }
   };
 
@@ -81,6 +82,13 @@ const CreateAddress = () => {
       <Nav />
       <div className="w-[90%] max-w-[500px] bg-white shadow h-auto rounded-[4px] p-4 mx-auto">
         <h5 className="text-[24px] font-semibold text-center">Add Address</h5>
+        
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mt-4">
+            {error}
+          </div>
+        )}
+        
         <form onSubmit={handleSubmit}>
           <div className="mt-4">
             <label className="pb-1 block">Country</label>
@@ -150,8 +158,9 @@ const CreateAddress = () => {
           <button
             type="submit"
             className="w-full mt-4 bg-blue-500 text-white p-2 rounded"
+            disabled={isLoading || error}
           >
-            Add Address
+            {isLoading ? "Adding..." : "Add Address"}
           </button>
         </form>
       </div>

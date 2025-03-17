@@ -1,9 +1,0 @@
-// eslint-disable-next-line no-unused-expressions, no-undef
-d.config.js;
-module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};

@@ -1,21 +1,20 @@
-import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import CreateProduct from "./pages/CreateProduct";
+import Home from "./pages/Home";
 import MyProducts from "./pages/MyProducts";
-import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/cart";
 import Profile from "./pages/profile";
-import CreateAddress from "./pages/CreateAddress";
-
+import CreateAddress from "./pages/createAddress";
+import SelectAddress from "./pages/SelectAddress";
 export {
-  Home,
-  LoginPage,
-  SignupPage,
-  CreateProduct,
-  MyProducts,
-  ProductDetails,
-  Cart,
-  Profile,
-  CreateAddress,
-};
+    SelectAddress,
+    LoginPage,
+    SignupPage,
+    Home,
+    MyProducts,
+    Cart,
+    CreateProduct,
+    Profile,
+    CreateAddress
+}

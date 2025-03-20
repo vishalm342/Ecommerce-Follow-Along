@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "name": "Ecommerce",
+  "name": "br_ecom",
   "type": "collection",
   "ignore": [
     "node_modules",

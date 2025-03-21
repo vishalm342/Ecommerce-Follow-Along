@@ -22,6 +22,27 @@ router.post('/place-order', async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: 'User not found.' });
         }
+        router.get('/my-orders', async (req, res) => {
+            try {
+                const { email } = req.query;
+        
+                if (!email) {
+                    return res.status(400).json({ message: 'Email is required.' });
+                }
+        
+                const user = await User.findOne({ email });
+                if (!user) {
+                    return res.status(404).json({ message: 'User not found.' });
+                }
+        
+                const orders = await Order.find({ user: user._id });
+        
+                res.status(200).json({ orders });
+            } catch (error) {
+                console.error('Error fetching orders:', error);
+                res.status(500).json({ message: error.message });
+            }
+        });
 
         // Create separate orders for each order item
         const orderPromises = orderItems.map(async (item) => {

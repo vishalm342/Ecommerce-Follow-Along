@@ -118,3 +118,6 @@ The Order Summary page will provide users with a clear overview of their purchas
 
 ## Milestone 25: 
 In this milestone , we will create an backend endpoint for place order.
+
+## Milestone 26:
+In this milestone, we created a backend endpoint for retrieving all orders associated with a user. The API accepts the user's email as a query parameter, finds the corresponding user ID, and then uses that ID to retrieve all orders from the order collection. The endpoint returns a list of orders along with metadata like the total count of orders. This functionality allows users to view their order history and track the status of their purchases.

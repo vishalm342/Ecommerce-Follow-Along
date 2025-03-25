@@ -12,6 +12,7 @@ import MyProducts from './pages/MyProducts';
 import ProductDetails from './pages/productDetails';
 import Profile from "./pages/profile.jsx";
 import SelectAddress from './pages/SelectAddress.jsx';import OrderConfirmation from "./pages/OrderConfirmation";
+import MyOrdersPage from './pages/MyOrders';
 const App = () => {
   return (
     <BrowserRouter>
@@ -29,6 +30,7 @@ const App = () => {
       <Route path="/create-address" element={<CreateAddress />} />
       <Route path="/select-address" element={<SelectAddress />} />    
        <Route path="/order-confirmation" element={<OrderConfirmation />} />
+        <Route path="/myorders" element={<MyOrdersPage />} />
       </Routes>
     </BrowserRouter>
   );

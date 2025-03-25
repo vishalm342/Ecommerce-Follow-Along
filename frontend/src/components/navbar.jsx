@@ -119,6 +119,17 @@ const NavBar = () => {
                     Profile
                   </NavLink>
                 </li>
+
+                <li>
+                  <NavLink to = "/myorders" className={({ isActive }) =>
+                      isActive
+                        ? "text-white font-semibold px-3 py-2 rounded-md text-sm transition-colors duration-200"
+                        : "text-gray-200 hover:text-white px-3 py-2 rounded-md text-sm transition-colors duration-200"
+                    }>
+                    My Orders
+
+                  </NavLink>
+                </li>
               </ul>
             </div>
           </div>
@@ -193,6 +204,17 @@ const NavBar = () => {
                   Profile
                 </NavLink>
               </li>
+              <li>
+                <NavLink to = "/myorders" className={({ isActive }) =>
+                    isActive
+                      ? "text-white font-semibold px-3 py-2 rounded-md text-sm transition-colors duration-200"
+                      : "text-gray-200 hover:text-white px-3 py-2 rounded-md text-sm transition-colors duration-200"
+                  }>
+                  My Orders
+
+                </NavLink>
+              </li>
+
             </ul>
           </div>
         )}

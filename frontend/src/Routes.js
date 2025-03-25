@@ -3,12 +3,13 @@ import SignupPage from "./pages/SignupPage";
 import CreateProduct from "./pages/CreateProduct";
 import Home from "./pages/Home";
 import MyProducts from "./pages/MyProducts";
-import Cart from "./pages/cart";
+import Cart from "./pages/Cart";
 import Profile from "./pages/profile";
 import CreateAddress from "./pages/createAddress";
 import SelectAddress from "./pages/SelectAddress";
+import OrderConfirmation from "./pages/OrderConfirmation";
+import MyOrdersPage from "./pages/MyOrders";
 export {
-    SelectAddress,
     LoginPage,
     SignupPage,
     Home,
@@ -16,5 +17,8 @@ export {
     Cart,
     CreateProduct,
     Profile,
-    CreateAddress
+    CreateAddress,
+    SelectAddress,
+    OrderConfirmation,
+    MyOrdersPage
 }

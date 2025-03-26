@@ -116,8 +116,14 @@ Milestone 23 focuses on implementing the order placement flow. A "Place Order" b
 ## Milestone 24:
 The Order Summary page will provide users with a clear overview of their purchase before finalizing the order. It will display all the products being ordered, including their details such as name, quantity, and price. Below the product list, the selected delivery address will be shown to ensure the user reviews it before proceeding. The total cart value will also be displayed, giving a complete cost breakdown. At the bottom of the page, a "Place Order" button will be available, allowing the user to confirm and complete their purchase seamlessly.
 
-## Milestone 25: 
-In this milestone , we will create an backend endpoint for place order.
+# Milestone 25:
+This endpoint allows users to place orders by sending product details, user information, and address details. The system retrieves the user's _id using their email and processes each product as a separate order while maintaining the same address. Each order is stored in the MongoDB orders collection using the previously defined Order schema. This ensures that every product is tracked as an independent order while linking all orders to the same user and delivery address.
 
 ## Milestone 26:
 In this milestone, we created a backend endpoint for retrieving all orders associated with a user. The API accepts the user's email as a query parameter, finds the corresponding user ID, and then uses that ID to retrieve all orders from the order collection. The endpoint returns a list of orders along with metadata like the total count of orders. This functionality allows users to view their order history and track the status of their purchases.
+
+# Milestone 27:
+Milestone 27 focuses on implementing the My Orders page in the e-commerce project. This involves sending a GET request to the /my-orders endpoint, where the user's email is passed to retrieve all their orders from the database. The fetched orders will then be displayed dynamically on the My Orders page, ensuring users can easily view their purchase history. A navigation link to this page will also be added to the navbar for better accessibility. This update enhances the user experience by providing a dedicated order tracking and management section.
+
+# Milestone 28:
+Milestone 28 enhances the **My Orders** page by adding a **Cancel Order** button for each active order. This button will allow users to cancel an order if it has not already been canceled. If an order is already marked as canceled, the button will not be displayed. To achieve this, a new **API endpoint** will be created to handle order cancellations. When a user clicks the cancel button, the order **ID** will be sent to this endpoint, which will retrieve the order, update its status to **canceled**, and save the changes. This feature improves order management and gives users more control over their purchases.

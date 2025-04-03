@@ -127,3 +127,6 @@ Milestone 27 focuses on implementing the My Orders page in the e-commerce projec
 
 ## Milestone 28:
 Milestone 28 enhances the **My Orders** page by adding a **Cancel Order** button for each active order. This button will allow users to cancel an order if it has not already been canceled. If an order is already marked as canceled, the button will not be displayed. To achieve this, a new **API endpoint** will be created to handle order cancellations. When a user clicks the cancel button, the order **ID** will be sent to this endpoint, which will retrieve the order, update its status to **canceled**, and save the changes. This feature improves order management and gives users more control over their purchases.
+
+## Milestone 29:
+In this Milestone , we will learn how to add online payment gateway to our application using Paypal api.

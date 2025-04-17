@@ -4,14 +4,15 @@ import axios from "axios";
 import Nav from "../components/Navbar";
 import { IoIosAdd } from "react-icons/io";
 import { IoIosRemove } from "react-icons/io";
-
+import { useSelector } from "react-redux";
 export default function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const email = "rahul@gmail.com";
+  // const email = "rahul@gmail.com";
+ const email = useSelector((state) => state.user.email);
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -48,31 +49,19 @@ export default function ProductDetails() {
 
   const addtocart = async () => {
     try {
-      // Use the dedicated cart API endpoint instead of product/cart
       const response = await axios.post(
-        "http://localhost:8000/api/v2/add-to-cart",
+        "http://localhost:8000/api/v2/product/cart",
         {
           userId: email,
           productId: id,
           quantity: quantity,
-          price: product.price,
-          name: product.name,
-          image:
-            product.images && product.images.length > 0
-              ? product.images[0]
-              : "",
         }
       );
-
       console.log("Added to cart:", response.data);
-      // Show successful message to user
-      alert("Product added to cart successfully!");
     } catch (err) {
       console.error("Error adding to cart:", err);
-      alert("Failed to add product to cart. Please try again.");
     }
   };
-
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -188,7 +177,7 @@ export default function ProductDetails() {
 
               <div className="flex flex-wrap gap-x-5 my-3">
                 <button
-                  className="bg-black text-white px-5 py-2 rounded-full hover:bg-neutral-800 hover:-translate-y-1.5 active:translate-y-0 transition-transform duration-200 ease-in-out active:duration-0 active:ease-linear"
+                  className="bg-black text-white px-5 py-2 rounded-full hover:bg-neutral-800 hover:-translate-y-1.5 active:translate-y-0 transition-transform duration-200 ease-in-out"
                   onClick={addtocart}
                 >
                   Add to Cart

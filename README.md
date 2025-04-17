@@ -136,3 +136,6 @@ In this Milestone ,  we will learn how to add online payment gateway to our appl
 
 ## Milestone 31:
 In this Milestone , we will learn how to implement global state management using Redux.
+
+## Milestone 32
+In this Milestone, we implemented global state management to handle user authentication by storing the user's email after login. When the user logs in successfully, we use the dispatch method from Redux to store their email in a global state using a slice (userSlice). This allows us to access the email across different components using the useSelector hook. By doing this, we avoid passing props manually and ensure a consistent user context throughout the application. This email is then used to filter and fetch data specific to the logged-in user in other pages, enhancing both security and user experience.

@@ -78,6 +78,16 @@ router.post("/login", catchAsyncErrors(async (req, res, next) => {
         user,
     });
 }));
+
+
+    const token = user.getJWTToken(); 
+        {id: user._id, email: user.email},
+        process.env.JWT_SECRET,
+        {
+            expiresIn: process.env.JWT_EXPIRES_TIME,
+            {}
+        }
+
 router.get(
   "/profile",
   catchAsyncErrors(async (req, res, next) => {
@@ -190,9 +200,7 @@ router.post("/add-address", catchAsyncErrors(async (req, res, next) => {
  
 
 }));
-router.get(
-    "/addresses",
-    catchAsyncErrors(async (req, res, next) => {
+router.get("/addresses",catchAsyncErrors(async (req, res, next) => {
       const { email } = req.query;
       if (!email) {
         return next(new ErrorHandler("Please provide an email", 400));
